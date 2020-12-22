@@ -1,0 +1,13 @@
+.heading{
+    width:100%;
+    font-size:18px;
+    margin: 0px;
+ }
+ canvas{
+    border: 10px groove rgb(0, 68, 255);
+    border-radius:50px;
+    box-shadow:10px 20px 30px rgb(154, 226, 231);
+}
+body{
+    background-size: contain;
+}
