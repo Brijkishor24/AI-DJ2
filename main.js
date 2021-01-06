@@ -15,7 +15,7 @@ function setup(){
   video=createCapture(VIDEO);
   video.hide();
   
-  poseNet=ml5.posenet(video,modelloaded);
+  poseNet=ml5.poseNet(video,modelloaded);
   poseNet.on('pose',gotPoses);
 }
 function modelloaded(){
@@ -28,6 +28,8 @@ function gotPoses(results){
     leftWristX=results[0].pose.leftWrist.x;
     leftWristY=results[0].pose.leftWrist.y;
     console.log("Left Wrist X = "+leftWristX+" , "+"Left Wrist Y = "+leftWristY);
+    leftWristXscore=results[0].pose.keypoints[0].score;
+    console.log("Left Wrist Score = "+leftWristscore);
 
     rightWristX=reuslts[0].pose.rightWrist.x;
     rightWristY=results[0].pose.rightWrist.y;
@@ -36,4 +38,13 @@ function gotPoses(results){
 }
 function draw() {  
     image(video,0,0,500,500);
+
+    fill("red");
+    stroke("red");
+    if(leftWristXscore > 0.2){
+      circle(leftWristX,leftWristY,20);
+      InNumberleftWristY=Number(leftWristY);
+      remove_decimals=floor(InNumberleftWristY);
+      song1.play();
+    }
 }
